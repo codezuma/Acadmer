@@ -28,6 +28,7 @@ class inputBox {
         this.errorList.push(new errorObject('emptyvalidation','you left the field empty',state));
     }
 }
+
 class errorObject {
     constructor(name,message,state){
         this.name = name;
@@ -52,6 +53,15 @@ passwordBox.showPassword = function () {
     }
 }
 passwordBox.eyeIcon.oninput = () => {passwordBox.showPassword()};
+passwordBox.inputElement.onblur = function() {
+    //will erase the current error array so error objects dont overlap
+    passwordBox.errorList.length =0;
+    passwordBox.emptyInputValidater();
+    //if no error is found then it will return false
+    const foundError = passwordBox.errorList.find((ele)=>{return ele.state === false}) ? passwordBox.errorList.find((ele)=>{return ele.state === false}): false;
+    console.log(passwordBox.errorList); 
+    passwordBox.showError(foundError ? foundError.message : false);
+}
 
 /* validations for password box */
 
