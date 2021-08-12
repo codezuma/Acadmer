@@ -1,0 +1,31 @@
+/* framework  */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+    font-family: 'Inter', sans-serif;
+}
+
+.container{
+    padding: 0 5%;
+    height: 100%;
+}
+.flex{
+    display: flex;
+    align-items: center;
+}
+:root{
+    --white_bg : #fcfcfc;
+    --primary_color:#10BF83;
+    --primary_color_border:#10bf828a;
+    --primary_color_font:#10bf82dc;
+    --black_font:#4D4D4D;
+    --red_color:#b60000;
+}
+button{
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+}

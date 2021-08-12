@@ -1,0 +1,237 @@
+@import url(../style/framework.css);
+
+* {
+    font-family: Inter;
+}
+
+.app_wrapper {
+    width: 100vw;
+    height: 100vh;
+}
+
+.extra_wrapper,
+.input_wrapper {
+    height: 100%;
+    justify-content: center;
+    padding: 1.5rem 2rem;
+}
+
+.extra_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 40%;
+    background-color: #10bf8257;
+}
+
+.input_wrapper {
+    height: 100%;
+    width: 60%;
+}
+
+.quote_wrapper {
+    width: 100%;
+}
+
+.quote {
+    display: block;
+    font-size: 2vw;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    color: #016A46;
+}
+
+.quote_writer {
+    display: block;
+    margin-top: 1em;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 22px;
+    color: rgba(1, 106, 70, 0.8);
+    text-align: right;
+}
+.hero_image{
+    width: 100%;
+    margin: 1rem 0;
+}
+.hero_image img{
+    width: 90%;
+}
+.input_wrapper_head {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 42px;
+    margin-bottom: .5rem;
+}
+
+.input_wrapper_subhead {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #989898;
+}
+
+.google_logo {
+    width: 25px;
+    margin-right: 1rem;
+}
+
+#google_sign_in_button {
+    width: 100%;
+    height: 55px;
+    background-color: transparent;
+    justify-content: center;
+    border: 1px solid #E4E4E4;
+    border-radius: 5px;
+    margin: 2rem 0;
+}
+
+#google_sign_in_button span {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.seperater_wrapp {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.seperater_wrapp div {
+    height: 2px;
+    border-radius: 1px;
+    width: 50%;
+    background: #e4e4e4;
+}
+
+.seperater_wrapp span {
+    padding: 0 1rem;
+    white-space: nowrap;
+    color: #989898;
+}
+
+.input_section {
+    width: 100%;
+}
+.input_section:hover .input_section_ele {
+    border-color: #808D9E;
+}
+.input_section_head {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 21px;
+    color: #002E1E;
+}
+
+.input_section_ele {
+    transition: .3s;
+    height: 55px;
+    font-size: 1rem;
+    width: 100%;
+    border: 2px solid #E4E4E4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 0 5%;
+    padding-left: calc(5% + 40px);
+    position: absolute;
+    outline: none;
+    color: #002E1E;
+    caret-color: #002E1E;
+}
+.input_section_ele:focus{
+    border-color: #3454CF !important;
+    color:#002E1E !important;
+}
+.input_section_ele:focus ~ svg{
+    stroke: #3454CF !important;
+}
+.input_section_ele_wrapper{
+    width: 100%;
+    position: relative;
+    height: 55px;
+    margin-top: .5rem;
+}
+.input_section_ele_icon{
+    position: absolute;
+    left: 15px;
+    stroke: #808D9E;
+    z-index: 1;
+}
+.input_message_box{
+    opacity: 0;
+    width: 100%;
+    height: 32px;
+    padding: 0.3rem .5rem;
+    color: var(--red_color);
+}
+.input_message_box svg{
+    stroke:var(--red_color);
+}
+.error_message_text{
+    margin-left: 1rem;
+    color: var(--red_color);
+    font-size: .8rem;
+    font-weight: 500;
+}
+.eye_icon{
+    right: 15px;
+    position: absolute;
+    stroke: #808D9E;
+    z-index: 1;
+    cursor: pointer;
+}
+.forgot_password_wrap{
+    width:100%;
+    justify-content: flex-end;
+}
+.forgot_password_button{
+    text-align: right;
+    font-weight: 600;
+    background:none;
+    outline: none;
+    border: none;
+    color: #002E1E;
+    transition: .3s ;
+}
+.forgot_password_button:hover{
+    text-decoration: underline;
+}
+.tc_wrap{
+    width: 100%;
+    margin-top: 1rem;
+}
+#tc_checkbox{
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+#tc_checkbox_input{
+    user-select: none;
+    font-weight:500;
+    margin-left: 1em;
+    cursor: pointer;
+}
+.submit_button{
+    margin: 2rem 0;
+    width: 100%;
+    height: 55px;
+    color:#ffffff;
+    border-radius: 5px;
+    background:#00CA85;
+    font-size: 1rem;
+    letter-spacing: .05em;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: .3s;
+}
+.submit_button:hover{
+    background:rgb(5, 177, 119);
+    box-shadow: 0px 3px 4px rgba(0, 202, 133, 0.25);
+}
+.input_form{
+    width: 65%;
+}
