@@ -28,12 +28,10 @@
 
         </div>
         <div class="input_wrapper flex">
-            <form action="" class="input_form" data-formtype = 'signup'>
+            <form action="" class="input_form" data-formtype='signup'>
                 <h2 class="input_wrapper_head">Get started with Acadmer</h2>
                 <h4 class="input_wrapper_subhead">Start your 1 month free trial. No credit card required.</h4>
-                <button id="google_sign_in_button" class="flex"> <img class="google_logo"
-                        src="../assests/images/icons8-google.svg" alt="google logo"><span>Sign up with
-                        Google</span></button>
+                <button id="google_sign_in_button" class="flex"><img class="google_logo"src="../assests/images/icons8-google.svg" alt="google logo"><span>Sign up with Google</span></button>
                 <div class="seperater_wrapp flex">
                     <div></div>
                     <span>Or Sign up with Email</span>
@@ -43,23 +41,29 @@
                     <h4 class="input_section_head">Email address</h4>
                     <div class="input_section_ele_wrapper flex">
                         <input class="input_section_ele" id="email_input" placeholder="johncarber@example.com">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="input_section_ele_icon input_icon" width="24"height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>   <polyline points="22,6 12,13 2,6"></polyline></svg>
-                    </div> 
-                    <div class="input_message_box flex"><svg xmlns="http://www.w3.org/2000/svg" class="error_box_icon" width="18" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="input_section_ele_icon input_icon" width="24"height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="input_message_box flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="error_box_icon" width="18" height="24"viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round"stroke-linejoin="round" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <span class="error_message_text"></span>
+                    </div>
+
                 </div>
                 <div class="input_section">
                     <h4 class="input_section_head">Password</h4>
                     <div class="input_section_ele_wrapper flex">
-                        <input type="password" id="password_input" class="input_section_ele"placeholder="johncarber@example.com">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="input_section_ele_icon input_icon" width="24"height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path> </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="eye_icon input_icon" width="24" height="24"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle> </svg>
+                        <input type="password" id="password_input" class="input_section_ele" placeholder="Must have minimum 6 characters">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="input_section_ele_icon input_icon" width="24"height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="eye_icon input_icon" width="24" height="24"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                     </div>
-                    <div class="input_message_box flex">  
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="error_box_icon" class="feather feather-alert-triangle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                        <span class="error_message_text">password must contain minimun 8 letters</span>
+                    <div class="input_message_box flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 24 24" fill="none"stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"class="error_box_icon" class="feather feather-alert-triangle"><pathd="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line> </svg>
+                        <span class="error_message_text"></span>
                     </div>
                 </div>
-                <div class="forgot_password_wrap flex"><button class="forgot_password_button"> forgot password?</button> </div>
+                <div class="forgot_password_wrap flex"><button class="forgot_password_button"> forgot password?</button>
+                </div>
                 <div class="tc_wrap flex"><input type="checkbox" id="tc_checkbox"><label id="tc_checkbox_input" for="tc_checkbox">I agree to Terms and Conditions</label></div>
                 <input type="submit" class="submit_button" value="Login">
             </form>

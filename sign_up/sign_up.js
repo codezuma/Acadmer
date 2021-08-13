@@ -14,7 +14,6 @@ class inputBox {
         const alertIcon = '<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line>'
         //will show error send in parameter
         const show_message_box = function (inputBoxObject, errorText, iconColor, iconPath) {
-            console.log(this);
             inputBoxObject.errorBox.style.opacity = '1';
             inputBoxObject.errorBox.querySelector('.error_message_text').innerHTML = errorText;
             inputBoxObject.inputElement.style.borderColor = iconColor;
@@ -56,14 +55,49 @@ class passwordInputBoxOutput extends inputBox {
             this.eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
         }
     }
+    minimunCharacterValidation() {
+        const length = 6;
+        const state = (this.inputElement.value.length >= length) ? true : false;
+        this.errorList.push(new errorObject('emptyvalidation', 'minimun 6 characters are required', state));
+    }
+
     validate_function() {
         //will erase the current error array so error objects dont overlap
         this.errorList.length = 0;
         this.emptyInputValidater();
+        this.minimunCharacterValidation();
         //if no error is found then it will return false
-        const foundError = passwordBox.errorList.find((ele) => { return ele.state === false }) ? passwordBox.errorList.find((ele) => { return ele.state === false }) : false;
+        const foundError = this.errorList.find((ele) => { return ele.state === false }) ? this.errorList.find((ele) => { return ele.state === false }) : false;
         //calls showError with error_mesaage or empty string
-        passwordBox.showError(foundError ? foundError.message : '');
+        this.showError(foundError ? foundError.message : '');
+    }
+}
+// sub class for passwrd input box
+class emailInputBoxOutput extends inputBox {
+    constructor(input_element) {
+        /*   sends data to parent data to make object */
+        super(input_element);
+    }
+    //validation for @ sign 
+    validationForAtSign() {
+        const state = (this.inputElement.value.includes('@')) ? true : false;
+        this.errorList.push(new errorObject('emptyvalidation', '@  is missing in your email address', state));
+    }
+    //validation for .com  
+    validationForDotComSign() {
+        const state = (this.inputElement.value.includes('.com')) ? true : false;
+        this.errorList.push(new errorObject('emptyvalidation', '.com is missing in your email address', state));
+    }
+    validate_function() {
+        //will erase the current error array so error objects dont overlap
+        this.errorList.length = 0;
+        this.emptyInputValidater();
+        this.validationForAtSign();
+        this.validationForDotComSign();
+        //if no error is found then it will return false
+        const foundError = this.errorList.find((ele) => { return ele.state === false }) ? this.errorList.find((ele) => { return ele.state === false }) : false;
+        //calls showError with error_mesaage or empty string
+        this.showError(foundError ? foundError.message : '');
     }
 }
 //creates error objects for error list
@@ -74,6 +108,6 @@ class errorObject {
         this.state = state;
     }
 }
-const emailBox = new inputBox(document.querySelector('#email_input'));
+const emailBox = new emailInputBoxOutput(document.querySelector('#email_input'));
 const passwordBox = new passwordInputBoxOutput(document.querySelector('#password_input'));
 

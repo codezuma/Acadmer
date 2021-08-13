@@ -7,6 +7,7 @@
 .app_wrapper {
     width: 100vw;
     height: 100vh;
+    min-height: 700px;
 }
 
 .extra_wrapper,
@@ -234,4 +235,55 @@
 }
 .input_form{
     width: 65%;
+    max-width: 1200px;
+}
+@media only screen and (max-width:1250px) {
+    
+.input_form{
+    width: 80%;
+}
+.quote{
+    font-size: 3vw;
+}
+
+}
+@media only screen and (max-width:1000px) {
+    
+.input_form{
+    width: 95%;
+}
+.quote{
+    font-size: 2.5vw;
+}
+
+}
+@media only screen and (max-width:768px) {
+
+.input_form{
+    width: 75%;
+}
+.extra_wrapper {
+display: none;
+}
+
+.input_wrapper {
+    width: 100%;
+}
+
+
+}
+@media only screen and (max-width:600px) {
+
+.input_form{
+    width: 85%;
+}
+}
+@media only screen and (max-width:500px) {
+
+.input_form{
+    width: 100%;
+}
+.input_section_ele{
+    padding-right: 20%;
+}
 }
