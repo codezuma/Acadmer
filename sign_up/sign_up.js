@@ -1,3 +1,4 @@
+// class for all input field enviroment in form
 class inputBox {
     constructor(input_element) {
         this.inputElement = input_element;
@@ -5,22 +6,28 @@ class inputBox {
         this.inputIcon = this.inputSection.getElementsByClassName('input_icon')
         this.errorBox = this.inputSection.querySelector('.input_message_box');
         this.errorList = [];
+        /*  runs all the validation methods every time user blurs on input field */
+        this.inputElement.onblur = () => { this.validate_function(); }
     }
-    showError(error_maessge) {
+    showError(error_message_para) {
+        const checkIcon = ' <polyline points="20 6 9 17 4 12"></polyline>';
+        const alertIcon = '<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line>'
         //will show error send in parameter
-        if (error_maessge) {
-            this.errorBox.style.opacity = '1';
-            this.errorBox.querySelector('.error_message_text').innerHTML = error_maessge;
-            this.inputElement.style.borderColor = "var(--red_color)";
-            Array.from(this.inputIcon).forEach((ele) => { ele.style.stroke = "var(--red_color)" });
-            this.inputElement.style.color = 'var(--red_color)';
+        const show_message_box = function (inputBoxObject, errorText, iconColor, iconPath) {
+            console.log(this);
+            inputBoxObject.errorBox.style.opacity = '1';
+            inputBoxObject.errorBox.querySelector('.error_message_text').innerHTML = errorText;
+            inputBoxObject.inputElement.style.borderColor = iconColor;
+            Array.from(inputBoxObject.inputIcon).forEach((ele) => { ele.style.stroke = iconColor });
+            inputBoxObject.inputElement.style.color = iconColor;
+            inputBoxObject.errorBox.querySelector('.error_box_icon').innerHTML = iconPath;
+            inputBoxObject.errorBox.querySelector('.error_box_icon').style.stroke = iconColor;
+        }
+        if (error_message_para) {
+            show_message_box(this, error_message_para, 'var(--red_color)', alertIcon);
         }
         else {
-            this.errorBox.style.opacity = '0';
-            this.inputElement.style.borderColor = "blue";
-            Array.from(this.inputIcon).forEach((ele) => { ele.style.stroke = "blue" });
-            this.inputElement.style.color = 'blue';
-
+            show_message_box(this, ' ', 'var(--green_color)', checkIcon);
         }
     }
     emptyInputValidater() {
@@ -28,42 +35,38 @@ class inputBox {
         this.errorList.push(new errorObject('emptyvalidation', 'you left the field empty', state));
     }
 }
+// sub class for passwrd input box
 class passwordInputBoxOutput extends inputBox {
     constructor(input_element) {
         /*   sends data to parent data to make object */
         super(input_element);
-       /*  runs all the validation methods every time user blurs on input field */
-        this.inputElement.onblur = ()=>{this.validate_function();}
-        }
-        showPassword = function () {
-            if (this.inputElement.getAttribute('type') === 'password') {
-                this.inputElement.setAttribute('type', 'text');
-                this.eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
-            }
-            else {
-                this.inputElement.setAttribute('type', 'password');
-                this.eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
-            }
-        /*  toggles icon based on input type */
-
+        /*shows password when clicked on icon */
+        const eyeIcon =  this.inputSection.getElementsByClassName('eye_icon')[0];
+        eyeIcon.onclick = () => {passwordBox.showPassword()};
     }
-         validate_function() {
-        console.log('wroking');
+
+    /*  toggles input type on eyeIcon click*/
+    showPassword = function () {
+        if (this.inputElement.getAttribute('type') === 'password') {
+            this.inputElement.setAttribute('type', 'text');
+            this.eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+        }
+        else {
+            this.inputElement.setAttribute('type', 'password');
+            this.eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+        }
+    }
+    validate_function() {
         //will erase the current error array so error objects dont overlap
-        passwordBox.errorList.length = 0;
-        passwordBox.emptyInputValidater();
+        this.errorList.length = 0;
+        this.emptyInputValidater();
         //if no error is found then it will return false
         const foundError = passwordBox.errorList.find((ele) => { return ele.state === false }) ? passwordBox.errorList.find((ele) => { return ele.state === false }) : false;
-        console.log(passwordBox.errorList);
-        passwordBox.showError(foundError ? foundError.message : false);
+        //calls showError with error_mesaage or empty string
+        passwordBox.showError(foundError ? foundError.message : '');
     }
-
-
-
-
-
 }
-
+//creates error objects for error list
 class errorObject {
     constructor(name, message, state) {
         this.name = name;
@@ -74,5 +77,3 @@ class errorObject {
 const emailBox = new inputBox(document.querySelector('#email_input'));
 const passwordBox = new passwordInputBoxOutput(document.querySelector('#password_input'));
 
-passwordBox.eyeIcon = passwordBox.inputSection.getElementsByClassName('eye_icon')[0];
-passwordBox.eyeIcon.onclick = () => { passwordBox.showPassword() };
