@@ -111,3 +111,9 @@ class errorObject {
 const emailBox = new emailInputBoxOutput(document.querySelector('#email_input'));
 const passwordBox = new passwordInputBoxOutput(document.querySelector('#password_input'));
 
+//animation code 
+const displayTimeline = gsap.timeline();
+displayTimeline.from('.logo_wrapper', {duration: .35, opacity:0,x:-50,ease:Back.easeInOut.config(1.4)});
+displayTimeline.from('.input_form', {duration: .35, opacity:0,x:500,ease:Back.easeInOut.config(1.4)});
+displayTimeline.from('.quote_wrapper', {duration: .35, opacity:0,y:200,ease:Back.easeInOut.config(1.4)});
+displayTimeline.from('.hero_image', {duration: .35, opacity:0,x:-200,y:200,ease:Back.easeInOut.config(1.2)});
