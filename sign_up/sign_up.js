@@ -117,3 +117,22 @@ displayTimeline.from('.logo_wrapper', {duration: .35, opacity:0,x:-50,ease:Back.
 displayTimeline.from('.input_form', {duration: .35, opacity:0,x:500,ease:Back.easeInOut.config(1.4)});
 displayTimeline.from('.quote_wrapper', {duration: .35, opacity:0,y:200,ease:Back.easeInOut.config(1.4)});
 displayTimeline.from('.hero_image', {duration: .35, opacity:0,x:-200,y:200,ease:Back.easeInOut.config(1.2)});
+
+//toggle between sign_up and login form
+ function switchform(){
+    const switch_animation = gsap.timeline();
+    switch_animation.to('.input_form[data-formstate="active"]', {duration: .2, display:'none',x:-500,opacity:0,ease:Back.easeInOut.config(1.4)})
+    switch_animation.fromTo('.input_form[data-formstate="hidden"]', {duration: .2, display:'none',x:500,opacity:0,ease:Back.easeInOut.config(1.4)}, {duration: .5, display:'block',x:0,opacity:1});
+/*     const activeForm
+    const hiddenForm = document.getElementsByClassName('input_form') */
+   const active = document.querySelector('.input_form[data-formstate*="hidden"]'); 
+   const hidden = document.querySelector('.input_form[data-formstate*="active"]'); 
+   console.log('before changing',active,hidden);
+   document.querySelector('.input_form[data-formstate*="hidden"]').setAttribute('data-formstate','active');
+   document.querySelector('.input_form[data-formstate*="active"]').setAttribute('data-formstate','hidden');
+   console.log('after changing',active,hidden);
+    return false
+ }/* /* 
+ document.getElementsByClassName('sign_up_button')[0].onclick = switchform();  */
+ document.getElementsByClassName('sign_up_button')[0].onclick = ()=>{switchform()}  ;  
+ document.getElementsByClassName('sign_up_button')[1].onclick = ()=>{switchform()}  ;  
