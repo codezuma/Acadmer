@@ -276,11 +276,13 @@ display: none;
 @media only screen and (max-width:600px) {
 
 .input_form{
-    width: 85%;
+    width: 95%;
 }
 }
 @media only screen and (max-width:500px) {
-
+.input_wrapper_head{
+    font-size: 1.6rem;
+}
 .input_form{
     width: 100%;
 }
