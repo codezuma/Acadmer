@@ -31,7 +31,7 @@
 
         </div>
         <div class="input_wrapper flex">
-            <form class="input_form" data-formtype='signup' data-formstate = 'active'>
+            <form class="input_form" data-formtype='signup' data-formactive>
                 <h2 class="input_wrapper_head">Get started with Acadmer</h2>
                 <h4 class="input_wrapper_subhead">Start your 1 month free trial. No credit card required.</h4>
                 <button id="google_sign_in_button" class="flex"><img class="google_logo"src="../assests/images/icons8-google.svg" alt="google logo"><span>Sign up with Google</span></button>
@@ -43,7 +43,7 @@
                 <div class="input_section">
                     <h4 class="input_section_head">Email address</h4>
                     <div class="input_section_ele_wrapper flex">
-                        <input class="input_section_ele" id="email_input" placeholder="johncarber@example.com">
+                        <input class="input_section_ele" id="signup_email_input" placeholder="johncarber@example.com">
                         <svg xmlns="http://www.w3.org/2000/svg" class="input_section_ele_icon input_icon" width="24"height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
                     </div>
@@ -55,7 +55,7 @@
                 <div class="input_section">
                     <h4 class="input_section_head">Password</h4>
                     <div class="input_section_ele_wrapper flex">
-                        <input type="password" id="password_input" class="input_section_ele" placeholder="Must have minimum 6 characters">
+                        <input type="password" id="signup_password_input" class="input_section_ele" placeholder="Must have minimum 6 characters">
                         <svg xmlns="http://www.w3.org/2000/svg" class="input_section_ele_icon input_icon" width="24"height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                         <svg xmlns="http://www.w3.org/2000/svg" class="eye_icon input_icon" width="24" height="24"viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                     </div>
@@ -68,7 +68,7 @@
                 <input type="submit" class="submit_button" value="Login">
                 <div class="sign_in_button_wrap flex"><button type="button" class="sign_up_button">Have an account?<font>Login with account</font></button></div>
             </form>
-            <form class="input_form" data-formtype='signin' data-formstate = 'hidden'>
+            <form class="input_form" data-formtype='signin' data-formhidden>
                 <h2 class="input_wrapper_head">Hi,Welcome back !</h2>
                 <h4 class="input_wrapper_subhead">Introduce a friend to Acadmer and 20% discount.</h4>
                 <button id="google_sign_in_button" class="flex"><img class="google_logo"src="../assests/images/icons8-google.svg" alt="google logo"><span>Login with Google</span></button>

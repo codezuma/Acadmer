@@ -40,12 +40,14 @@ class passwordInputBoxOutput extends inputBox {
         /*   sends data to parent data to make object */
         super(input_element);
         /*shows password when clicked on icon */
-        const eyeIcon =  this.inputSection.getElementsByClassName('eye_icon')[0];
-        eyeIcon.onclick = () => {passwordBox.showPassword()};
+
+        this.eyeIcon =  this.inputSection.getElementsByClassName('eye_icon')[0];
+        this.eyeIcon.onclick = () => {this.showPassword()};
     }
 
     /*  toggles input type on eyeIcon click*/
     showPassword = function () {
+        console.log('working');
         if (this.inputElement.getAttribute('type') === 'password') {
             this.inputElement.setAttribute('type', 'text');
             this.eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
@@ -108,8 +110,12 @@ class errorObject {
         this.state = state;
     }
 }
-const emailBox = new emailInputBoxOutput(document.querySelector('#email_input'));
-const passwordBox = new passwordInputBoxOutput(document.querySelector('#password_input'));
+//sign up inputs fields
+const signup_emailBox = new emailInputBoxOutput(document.querySelector('#signup_email_input'));
+const signup_passwordBox = new passwordInputBoxOutput(document.querySelector('#signup_password_input'));
+//login input fields
+const login_emailBox = new emailInputBoxOutput(document.querySelector('#email_input'));
+const login_passwordBox = new passwordInputBoxOutput(document.querySelector('#password_input'));
 
 //animation code 
 const displayTimeline = gsap.timeline();
@@ -121,17 +127,16 @@ displayTimeline.from('.hero_image', {duration: .35, opacity:0,x:-200,y:200,ease:
 //toggle between sign_up and login form
  function switchform(){
     const switch_animation = gsap.timeline();
-    switch_animation.to('.input_form[data-formstate="active"]', {duration: .2, display:'none',x:-500,opacity:0,ease:Back.easeInOut.config(1.4)})
-    switch_animation.fromTo('.input_form[data-formstate="hidden"]', {duration: .2, display:'none',x:500,opacity:0,ease:Back.easeInOut.config(1.4)}, {duration: .5, display:'block',x:0,opacity:1});
-/*     const activeForm
-    const hiddenForm = document.getElementsByClassName('input_form') */
-   const active = document.querySelector('.input_form[data-formstate*="hidden"]'); 
-   const hidden = document.querySelector('.input_form[data-formstate*="active"]'); 
-   console.log('before changing',active,hidden);
-   document.querySelector('.input_form[data-formstate*="hidden"]').setAttribute('data-formstate','active');
-   document.querySelector('.input_form[data-formstate*="active"]').setAttribute('data-formstate','hidden');
-   console.log('after changing',active,hidden);
-    return false
+    switch_animation.fromTo('.input_form[data-formactive]', {duration: .2, display:'block',x:0,opacity:1,ease:Back.easeInOut.config(1.4)}, {duration: .2, display:'none',x:-500,opacity:0,ease:Back.easeInOut.config(1.4)});
+    switch_animation.fromTo('.input_form[data-formhidden]', {duration: .2, display:'none',x:500,opacity:0,ease:Back.easeInOut.config(1.4)}, {duration: .5, display:'block',x:0,opacity:1});
+    const active_form = document.querySelector('.input_form[data-formactive]');
+    const hidden_form = document.querySelector('.input_form[data-formhidden]');
+    active_form.removeAttribute('data-formactive');
+    active_form.setAttribute('data-formhidden','');
+    hidden_form.removeAttribute('data-formhidden');
+    hidden_form.setAttribute('data-formactive','');
+    console.log(active_form,hidden_form);
+   
  }/* /* 
  document.getElementsByClassName('sign_up_button')[0].onclick = switchform();  */
  document.getElementsByClassName('sign_up_button')[0].onclick = ()=>{switchform()}  ;  
