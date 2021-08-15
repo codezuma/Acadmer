@@ -33,6 +33,7 @@
     flex-direction: column;
     align-items: center;
     width: 60%;
+    position: relative;
     justify-content: space-between;
 }
 
@@ -270,6 +271,9 @@
     color: #808D9E;
     width: 100%;
     font-size: .8rem;
+    position: absolute;
+    bottom: 1rem;
+    padding: 0 2rem;
 }
 @media only screen and (max-width:1250px) {
     

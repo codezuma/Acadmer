@@ -114,8 +114,8 @@ class errorObject {
 const signup_emailBox = new emailInputBoxOutput(document.querySelector('#signup_email_input'));
 const signup_passwordBox = new passwordInputBoxOutput(document.querySelector('#signup_password_input'));
 //login input fields
-const login_emailBox = new emailInputBoxOutput(document.querySelector('#email_input'));
-const login_passwordBox = new passwordInputBoxOutput(document.querySelector('#password_input'));
+const login_emailBox = new emailInputBoxOutput(document.querySelector('#login_email_input'));
+const login_passwordBox = new passwordInputBoxOutput(document.querySelector('#login_password_input'));
 
 //animation code 
 const displayTimeline = gsap.timeline();
@@ -135,9 +135,8 @@ displayTimeline.from('.hero_image', {duration: .35, opacity:0,x:-200,y:200,ease:
     active_form.setAttribute('data-formhidden','');
     hidden_form.removeAttribute('data-formhidden');
     hidden_form.setAttribute('data-formactive','');
-    console.log(active_form,hidden_form);
    
- }/* /* 
- document.getElementsByClassName('sign_up_button')[0].onclick = switchform();  */
+ }
+// switching forms with buttons
  document.getElementsByClassName('sign_up_button')[0].onclick = ()=>{switchform()}  ;  
  document.getElementsByClassName('sign_up_button')[1].onclick = ()=>{switchform()}  ;  
