@@ -31,10 +31,10 @@
 
         </div>
         <div class="input_wrapper flex">
-            <form class="input_form" data-formtype='signup' data-formactive>
+            <form class="input_form" data-formtype='signup' id="signUpForm" data-formactive>
                 <h2 class="input_wrapper_head">Get started with Acadmer</h2>
                 <h4 class="input_wrapper_subhead">Start your 1 month free trial. No credit card required.</h4>
-                <button id="google_sign_in_button" class="flex"><img class="google_logo"src="../assests/images/icons8-google.svg" alt="google logo"><span>Sign up with Google</span></button>
+                <button id="google_sign_up_button" class="flex"><img class="google_logo"src="../assests/images/icons8-google.svg" alt="google logo"><span>Sign up with Google</span></button>
                 <div class="seperater_wrapp flex">
                     <div></div>
                     <span>Or Sign up with Email</span>
@@ -65,10 +65,10 @@
                     </div>
                 </div>
                 <div class="tc_wrap flex"><input type="checkbox" id="tc_checkbox"><label id="tc_checkbox_input" for="tc_checkbox">I agree to Terms and Conditions</label></div>
-                <input type="submit" class="submit_button" value="Login">
+                <input type="submit" class="submit_button" value="Create an account">
                 <div class="sign_in_button_wrap flex"><button type="button" class="sign_up_button">Have an account?<font>Login with account</font></button></div>
             </form>
-            <form class="input_form" data-formtype='signin' data-formhidden>
+            <form class="input_form" data-formtype='signin' id="signInForm" data-formhidden>
                 <h2 class="input_wrapper_head">Hi,Welcome back !</h2>
                 <h4 class="input_wrapper_subhead">Introduce a friend to Acadmer and 20% discount.</h4>
                 <button id="google_sign_in_button" class="flex"><img class="google_logo"src="../assests/images/icons8-google.svg" alt="google logo"><span>Login with Google</span></button>
@@ -109,6 +109,6 @@
         </div>
     </div>
     <script src="../script/gsap.min.js"></script>
-    <script src="sign_up.js"></script>
+    <script type="module" src="sign_up.js"></script>
 </body>
 </html>

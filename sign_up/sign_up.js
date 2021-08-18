@@ -1,116 +1,14 @@
-// class for all input field enviroment in form
-class inputBox {
-    constructor(input_element) {
-        this.inputElement = input_element;
-        this.inputSection = input_element.parentElement.parentElement;
-        this.inputIcon = this.inputSection.getElementsByClassName('input_icon')
-        this.errorBox = this.inputSection.querySelector('.input_message_box');
-        this.errorList = [];
-        /*  runs all the validation methods every time user blurs on input field */
-        this.inputElement.onblur = () => { this.validate_function(); }
-    }
-    showError(error_message_para) {
-        const checkIcon = ' <polyline points="20 6 9 17 4 12"></polyline>';
-        const alertIcon = '<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line>'
-        //will show error send in parameter
-        const show_message_box = function (inputBoxObject, errorText, iconColor, iconPath) {
-            inputBoxObject.errorBox.style.opacity = '1';
-            inputBoxObject.errorBox.querySelector('.error_message_text').innerHTML = errorText;
-            inputBoxObject.inputElement.style.borderColor = iconColor;
-            Array.from(inputBoxObject.inputIcon).forEach((ele) => { ele.style.stroke = iconColor });
-            inputBoxObject.inputElement.style.color = iconColor;
-            inputBoxObject.errorBox.querySelector('.error_box_icon').innerHTML = iconPath;
-            inputBoxObject.errorBox.querySelector('.error_box_icon').style.stroke = iconColor;
-        }
-        if (error_message_para) {
-            show_message_box(this, error_message_para, 'var(--red_color)', alertIcon);
-        }
-        else {
-            show_message_box(this, ' ', 'var(--green_color)', checkIcon);
-        }
-    }
-    emptyInputValidater() {
-        const state = this.inputElement.value ? true : false;
-        this.errorList.push(new errorObject('emptyvalidation', 'you left the field empty', state));
-    }
-}
-// sub class for passwrd input box
-class passwordInputBoxOutput extends inputBox {
-    constructor(input_element) {
-        /*   sends data to parent data to make object */
-        super(input_element);
-        /*shows password when clicked on icon */
+import {passwordInputBoxOutput,emailInputBoxOutput,formBox} from '../script/modules/form.js';
+//code to check wheather browser is compatible with database or not
+// In the following line, you should include the prefixes of implementations you want to test.
+const localDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+// DON'T use "var indexedDB = ..." if you're not in a function.
+// Moreover, you may need references to some window.IDB* objects:
+window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction || {READ_WRITE: "readwrite"}; // This line should only be needed if it is needed to support the object's constants for older browsers
+window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+// (Mozilla has never prefixed these objects, so we don't need window.mozIDB*)b
 
-        this.eyeIcon =  this.inputSection.getElementsByClassName('eye_icon')[0];
-        this.eyeIcon.onclick = () => {this.showPassword()};
-    }
-
-    /*  toggles input type on eyeIcon click*/
-    showPassword = function () {
-        console.log('working');
-        if (this.inputElement.getAttribute('type') === 'password') {
-            this.inputElement.setAttribute('type', 'text');
-            this.eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
-        }
-        else {
-            this.inputElement.setAttribute('type', 'password');
-            this.eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
-        }
-    }
-    minimunCharacterValidation() {
-        const length = 6;
-        const state = (this.inputElement.value.length >= length) ? true : false;
-        this.errorList.push(new errorObject('emptyvalidation', 'minimun 6 characters are required', state));
-    }
-
-    validate_function() {
-        //will erase the current error array so error objects dont overlap
-        this.errorList.length = 0;
-        this.emptyInputValidater();
-        this.minimunCharacterValidation();
-        //if no error is found then it will return false
-        const foundError = this.errorList.find((ele) => { return ele.state === false }) ? this.errorList.find((ele) => { return ele.state === false }) : false;
-        //calls showError with error_mesaage or empty string
-        this.showError(foundError ? foundError.message : '');
-    }
-}
-// sub class for passwrd input box
-class emailInputBoxOutput extends inputBox {
-    constructor(input_element) {
-        /*   sends data to parent data to make object */
-        super(input_element);
-    }
-    //validation for @ sign 
-    validationForAtSign() {
-        const state = (this.inputElement.value.includes('@')) ? true : false;
-        this.errorList.push(new errorObject('emptyvalidation', '@  is missing in your email address', state));
-    }
-    //validation for .com  
-    validationForDotComSign() {
-        const state = (this.inputElement.value.includes('.com')) ? true : false;
-        this.errorList.push(new errorObject('emptyvalidation', '.com is missing in your email address', state));
-    }
-    validate_function() {
-        //will erase the current error array so error objects dont overlap
-        this.errorList.length = 0;
-        this.emptyInputValidater();
-        this.validationForAtSign();
-        this.validationForDotComSign();
-        //if no error is found then it will return false
-        const foundError = this.errorList.find((ele) => { return ele.state === false }) ? this.errorList.find((ele) => { return ele.state === false }) : false;
-        //calls showError with error_mesaage or empty string
-        this.showError(foundError ? foundError.message : '');
-    }
-}
-//creates error objects for error list
-class errorObject {
-    constructor(name, message, state) {
-        this.name = name;
-        this.message = message;
-        this.state = state;
-    }
-}
-//sign up inputs fields
+//sign up inputs fields created with thier respective class with parent as inputElments
 const signup_emailBox = new emailInputBoxOutput(document.querySelector('#signup_email_input'));
 const signup_passwordBox = new passwordInputBoxOutput(document.querySelector('#signup_password_input'));
 //login input fields
@@ -138,5 +36,38 @@ displayTimeline.from('.hero_image', {duration: .35, opacity:0,x:-200,y:200,ease:
    
  }
 // switching forms with buttons
- document.getElementsByClassName('sign_up_button')[0].onclick = ()=>{switchform()}  ;  
- document.getElementsByClassName('sign_up_button')[1].onclick = ()=>{switchform()}  ;  
+document.getElementsByClassName('sign_up_button')[0].onclick = ()=>{switchform()};  
+document.getElementsByClassName('sign_up_button')[1].onclick = ()=>{switchform()};  
+// form submitting validation 
+class SignUpForm extends formBox{
+    constructor(form_para,...inputBoxes){
+        super(form_para,...inputBoxes);
+    }
+    SubmitForm(){ 
+         //returns false if validation is not completed
+        if(!this.ValidateForm()){return false;};
+        //saves data in data base 
+       const x = window.indexedDB.open('user');
+       const userObject = {email:this.inputBoxes[0].inputElement.value,password:this.inputBoxes[1].inputElement.value};
+       x.onsuccess = function(){
+           console.log(this);
+           const userObjectStore = this.result.createObjectStore('Users',{keyPath:'email'});
+           userObjectStore.add(userObject);
+       }
+       return false;
+    }
+}
+class SignInForm extends formBox{
+    constructor(form_para,...inputBoxes){
+        super(form_para,...inputBoxes);
+    }
+    SubmitForm(){
+         //returns false if validation is not completed
+        if(!this.ValidateForm()){return false;};  
+        console.log('login in successfull'); 
+    }
+}
+//form objects 
+const signup_form = new SignUpForm(document.getElementById('signUpForm'),signup_emailBox,signup_passwordBox);
+const signin_form = new SignInForm(document.getElementById('signInForm'),login_emailBox,login_passwordBox);
+
