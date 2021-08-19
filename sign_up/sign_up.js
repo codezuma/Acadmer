@@ -1,11 +1,11 @@
 import {passwordInputBoxOutput,emailInputBoxOutput,formBox} from '../script/modules/form.js';
 //code to check wheather browser is compatible with database or not
 // In the following line, you should include the prefixes of implementations you want to test.
-const localDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 // DON'T use "var indexedDB = ..." if you're not in a function.
 // Moreover, you may need references to some window.IDB* objects:
-window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction || {READ_WRITE: "readwrite"}; // This line should only be needed if it is needed to support the object's constants for older browsers
-window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction || {READ_WRITE: "readwrite"}; // This line should only be needed if it is needed to support the object's constants for older browsers
+ window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
 // (Mozilla has never prefixed these objects, so we don't need window.mozIDB*)b
 
 //sign up inputs fields created with thier respective class with parent as inputElments
@@ -47,11 +47,18 @@ class SignUpForm extends formBox{
          //returns false if validation is not completed
         if(!this.ValidateForm()){return false;};
         //saves data in data base 
-       const x = window.indexedDB.open('user');
+       const DBrequest = window.indexedDB.open('Acadmer');
        const userObject = {email:this.inputBoxes[0].inputElement.value,password:this.inputBoxes[1].inputElement.value};
-       x.onsuccess = function(){
-           console.log(this);
-           const userObjectStore = this.result.createObjectStore('Users',{keyPath:'email'});
+
+       DBrequest.onsuccess = function(){
+           // checking if database is created or not 
+           if(!'user' in this.result.objectStoreNames){
+           this.result.createObjectStore('user',{keyPath:"email"});
+           }
+       }
+       DBrequest.onupgradeneeded = function(){
+            const req  = this.result; 
+           req.objectStore('user','readwrite');
            userObjectStore.add(userObject);
        }
        return false;
