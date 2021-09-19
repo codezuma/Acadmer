@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">    <link rel="stylesheet" href="../style/framework.css">
+    <link rel="stylesheet" href="../style/dashboard.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app_wrap flex">
+        <div class="nav_section">
+            <div class="nav_logo_wrap flex">
+                <img class="nav_app_logo" src="../assests/images/dashboard app logo.svg" alt="">
+            </div>
+            <div class="nav_bar">
+                <div class="nav_item flex" data-status="non_active" data-nav-item='dashboard'>
+                    <span class="nav_item_icon material-icons-outlined md-18">dashboard</span>
+                    <span class="nav_item_text">Dashboard</span>
+                    <span class="nav_item_status_span"></span>
+                </div>
+                <div class="nav_item flex" data-status="active" data-nav-item='student'>
+                    <span class="nav_item_icon material-icons-outlined md-18">person</span>
+                    <span class="nav_item_text">Student</span>
+                    <span class="nav_item_status_span"></span>
+                </div>
+                <div class="nav_item flex" data-status="non_active" data-nav-item='class'>
+                    <span class="nav_item_icon material-icons-outlined md-18">groups</span>
+                    <span class="nav_item_text">Class</span>
+                    <span class="nav_item_status_span"></span>
+                </div>
+                <div class="nav_item flex" data-status="_non_active" data-nav-item='employe'>
+                    <span class="material-icons-outlined nav_item_icon md-18">badge</span>
+                    <span class="nav_item_text">Employe</span>
+                    <span class="nav_item_status_span"></span>
+                </div>
+                <div class="nav_item flex" data-status="non_active" data-nav-item='subject'>
+                    <span class="nav_item_icon material-icons-outlined md-18">book</span>
+                    <span class="nav_item_text">Subject</span>
+                    <span class="nav_item_status_span"></span>
+                </div>
+                <div class="nav_item flex" data-status="non_active" data-nav-item='account'>
+                    <span class="nav_item_icon material-icons-outlined md-18">account_balance</span>
+                    <span class="nav_item_text">Account</span>
+                    <span class="nav_item_status_span"></span>
+                </div>
+                <div class="nav_item flex" data-status="non_active" data-nav-item='message'>
+                    <span class="nav_item_icon material-icons-outlined md-18">sms</span>
+                    <span class="nav_item_text">Message</span>
+                    <span class="nav_item_status_span"></span>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard_section flex">
+            <header class="flex container">
+                <div class="search_bar_wrap  flex">
+                    <span class=" nav_section_togle material-icons-outlined md-36">keyboard_double_arrow_left</span>  
+                    <!--   <div class="search_bar_container flex">
+                       <input class="search_bar" placeholder="Search by name" type="search">
+                      <svg class="input_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </div>  -->
+                </div>
+                <div class="header_left_side flex ">
+                    <span class="material-icons-outlined bell_icon">notifications</span>
+                    <div class="user_info_wrap flex">
+                      <span class="user_profile_picture"></span>
+                    </div>    
+                </div>
+               
+            </header>
+            <section id="dashboard_item_con">
+                <div class="dashboard_item" data-status="non_active" data-dashboard-item="dashboard">dashboard</div>
+                <div class="dashboard_item" data-status="active" data-dashboard-item="student">
+                 <div class="dashboard_header container flex">
+                     <span class="heading4 ">Students</span>
+                     <button class="add_button flex"><span class="icon material-icons-outlined">add_circle_outline</span>Add a student</button>
+                 </div>
+                 <div class="students_dashboard_section">
+                    <div class="student_dashboard_menu_con container flex">
+                        <div class="search_bar_container flex">
+                            <input class="search_bar" placeholder="Search by name" type="search">
+                            <svg class="input_icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        </div> 
+                        <div class="flex">
+                            <span class="dropdown_label">Sort by</span>
+                            <div class="dropdown_wrap">
+                                <select class="">
+                                   <option value="" data-display-text="Class">None</option>
+                                   <option value="apples">Name</option>
+                                   <option value="bananas">Class</option>
+                                   <option value="oranges">Marks</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="students_table">
+                        <div class="table_head_wrap container flex">
+                                <div class="table_items">Name</div>
+                                <div class="table_items">Class </div>
+                                <div class="table_items">Schoar number</div>
+                                <div class="table_items">Phone number</div>
+                                <div class="table_items">Email</div>
+                        </div>
+                        <div class="student_table_row_con">
+                            <div class="table_student_row container flex">
+                                <div class="table_items">Chandresh Patidar</div>
+                                <div class="table_items">VI-5 </div>
+                                <div class="table_items">15</div>
+                                <div class="table_items">+91 978420657</div>
+                                <div class="table_items">patidarchandresh2002@gmail.com</div>
+                             </div>
+                            
+    
+                        </div>
+                       
+                    </div>
+                 </div>
+                 
+                </div>
+                <div class="dashboard_item" data-status="non_active" data-dashboard-item="class">class</div>
+                <div class="dashboard_item" data-status="non_active" data-dashboard-item="employe">employee</div>
+                <div class="dashboard_item" data-status="non_active" data-dashboard-item="subject">subject</div>
+                <div class="dashboard_item" data-status="non_active" data-dashboard-item="account">account</div>
+                <div class="dashboard_item" data-status="non_active" data-dashboard-item="message">message</div>
+            </section>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
